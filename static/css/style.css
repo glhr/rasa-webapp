@@ -8,6 +8,11 @@
     flex: 1 0 auto;
   } */
 
+.controls-row {
+  text-align: center;
+  margin-bottom: 5px !important;
+}
+
 .page-footer {
   padding-top: 0px !important;
   background-color: transparent !important;

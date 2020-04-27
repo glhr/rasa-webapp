@@ -1,9 +1,13 @@
 import * as socket from './socketio_client.js';
 import * as voice from './voice.js';
 
+export function addUserAudio(msg) {
+	// addUserMessageToList("Audio");
+	socket.sendUserMessage(msg);
+}
+
 export function addUserMessage(msg) {
 	addUserMessageToList(msg);
-	socket.sendUserMessage(msg);
 }
 
 export function receivedBotMessage(data) {
@@ -52,6 +56,6 @@ $('#user_input_form').submit(function(e) {
 		e.preventDefault();
 		var msg = $("#user_input").val();
 		console.log("user input " + msg);
-		addUserMessage(msg);
+		socket.sendUserMessage(msg);
 		$("#user_input").val('');
 });
