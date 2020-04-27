@@ -22,16 +22,16 @@ pip3 install eventlet flask
 ```
 
 ## Run
-Build the front-end with webpack:
+Build the front-end with webpack (this will generate ``/static/dist/bundle.js``):
 ```
 npm run build  # this will build the project once
 npm run watch  # this will continuously build the project any time a source file is updated
 ```
-Deploy the application using flask:
+Deploy the Flask application:
 ```
 python3 main.py
 ```
-This will launch the application at http://localhost:8080/ (as defined in ``main.py``), with Socket.IO listening on http://localhost:5005 (as defined in ``static/js/socketio_client.js``).
+This will launch the application at http://localhost:8080/ (as defined in ``main.py``), with the Socket.IO client listening on http://localhost:5005 (as defined in ``static/js/socketio_client.js``).
 
 ## Screenshots
 

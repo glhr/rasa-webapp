@@ -48,7 +48,6 @@ function addUserMessageToList(data) {
 }
 
 $('#user_input_form').submit(function(e) {
-    // get all the inputs into an array.
 		e.preventDefault();
 		var msg = $("#user_input").val();
 		console.log("user input " + msg);

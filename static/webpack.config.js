@@ -17,14 +17,6 @@ const config = {
         path: __dirname + '/dist',
         filename: 'bundle.js',
     },
-    resolve: {
-        extensions: ['.js', '.jsx', '.css'],
-         alias: {
-            leaflet_css: __dirname + '/node_modules/leaflet/dist/leaflet.css',
-            geosearch_css: __dirname + '/css/leaflet-geosearch_custom.css',
-            countries_geojson: __dirname + '/js/geojson/countries_simp_repair.json',
-        }
-    },
     module: {
         rules: [
           {
