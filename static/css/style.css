@@ -8,9 +8,13 @@
     flex: 1 0 auto;
   } */
 
-.controls-row {
+/* .controls-row {
   text-align: center;
   margin-bottom: 5px !important;
+} */
+
+#footer-row {
+  margin-bottom: 0px !important;
 }
 
 .page-footer {

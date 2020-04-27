@@ -41,22 +41,34 @@
 
     <footer class="page-footer">
       <div class="container">
-				<div class="row controls-row">
+				<!-- <div class="row controls-row">
 					<span id="controls">
 					 <button id="recordButton">Record</button>
 					 <button id="stopButton" disabled>Stop</button>
 				 </span>
-			 </div>
-            <div class="row">
+			 </div> -->
+            <div class="row" id="footer-row">
               <nav>
                   <div class="nav-wrapper">
+										<div class="col s11">
                     <form id="user_input_form">
                       <div class="input-field">
                         <input id="user_input" type="search" required>
                         <label class="label-icon" for="user_input"><i class="material-icons">send</i></label>
-                        <!-- <i class="material-icons">close</i> -->
+
                       </div>
                     </form>
+										</div>
+										<div class="col s1">
+										<ul class="right hide-on-med-and-down">
+									    <li><a id="record-button" class="btn-floating waves-effect waves-light teal darken-2">
+												<i class="material-icons">mic</i>
+											</a></li>
+											<li><a id="stop-button" class="btn-floating waves-effect waves-light teal lighten-2">
+												<i class="material-icons">settings_voice</i>
+											</a></li>
+									  </ul>
+									</div>
                   </div>
                 </nav>
             </div>

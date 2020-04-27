@@ -2,11 +2,7 @@ import './lib/vad';
 import Recorder from './lib/recorder';
 import * as index from './index.js';
 
-var recordButton = document.getElementById("recordButton");
-var stopButton = document.getElementById("stopButton");
-//add events to those 2 buttons
-recordButton.addEventListener("click", startRecording);
-stopButton.addEventListener("click", stopRecording);
+
 
 var audioContext = undefined;
 var isRecording = false;
@@ -26,8 +22,7 @@ ctx = canvas.getContext('2d');
 
 export function startRecording() {
   isRecording = true;
-  recordButton.disabled = true;
-  stopButton.disabled = false;
+  index.toggleRecordButton('off');
   window.AudioContext = window.AudioContext || window.webkitAudioContext;
   audioContext = new AudioContext({ sampleRate: 16000 });
   // Ask for audio device
@@ -40,8 +35,7 @@ export function startRecording() {
 }
 
 export function stopRecording() {
-  stopButton.disabled = true;
-  recordButton.disabled = false;
+  index.toggleRecordButton('on');
   isRecording = false;
   mediaRecorder.stop();
   mediaRecorder.exportWAV(createFileLink);

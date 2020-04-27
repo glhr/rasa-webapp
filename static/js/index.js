@@ -59,3 +59,29 @@ $('#user_input_form').submit(function(e) {
 		socket.sendUserMessage(msg);
 		$("#user_input").val('');
 });
+
+var recordButton = $("#record-button");
+var stopButton = $("#stop-button");
+stopButton.hide();
+recordButton.show();
+//add events to those 2 buttons
+
+recordButton.click(voice.startRecording);
+stopButton.click(voice.stopRecording);
+
+export function toggleRecordButton(state) {
+	if (state=='off') {
+		console.log('button off');
+		recordButton.hide();
+		stopButton.show();
+		// recordButton.disabled = true;
+		// stopButton.disabled = false;
+	}
+	else if (state=='on') {
+		console.log('button on');
+		stopButton.hide();
+		recordButton.show();
+		// recordButton.disabled = false;
+		// stopButton.disabled = true;
+	}
+}
