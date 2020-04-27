@@ -8,11 +8,26 @@
     flex: 1 0 auto;
   } */
 
+/* .controls-row {
+  text-align: center;
+  margin-bottom: 5px !important;
+} */
+
+#footer-row {
+  margin-bottom: 0px !important;
+}
+
 .page-footer {
   padding-top: 0px !important;
   background-color: transparent !important;
 }
 
+#sound-visualizer {
+  position: absolute;
+  width: 100%;
+  height: 200px;
+  top: -600px;
+}
 
 #msg_ul {
   height: 70vh;

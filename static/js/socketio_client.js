@@ -15,13 +15,17 @@ socket.on('session_confirm', function(remoteId) {
 })
 
 socket.on('bot_uttered', function(data) {
-    console.log('New message from backend: ', data);
-    if (data.user_utterance) {
-      handler.addUserMessage(data);
-    }
+    console.log('BOT REPLIED: ', data);
     handler.receivedBotMessage(data);
 })
 
-export function sendUserMessage(msg) {
-    socket.emit('user_uttered',{'message':msg});
+socket.on('user_uttered', function(data) {
+    console.log('USER SAID: ', data);
+    handler.addUserMessage(data.text);
+})
+
+export function sendUserMessage(text) {
+  if (text && text.length >= 1 && text.replace(/\s/g, '').length !== 0) {
+    socket.emit('user_uttered',{'message':text});
+  }
 }
