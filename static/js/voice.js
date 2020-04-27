@@ -1,5 +1,6 @@
 import './lib/vad';
-import Recorder from 'recorderjs';
+import Recorder from './lib/recorder';
+import * as socket from './socketio_client.js';
 
 var recordButton = document.getElementById("recordButton");
 var stopButton = document.getElementById("stopButton");
@@ -103,8 +104,8 @@ function createFileLink(blob) {
     const reader = new FileReader();
     reader.readAsDataURL(request.response);
     reader.onload = function(el) {
-      console.log('DataURL:', el.target.result);
       console.log('SEND RESULT TO THE BOT');
+      socket.sendUserMessage(el.target.result);
       // vm.sendMessageToBot(el.target.result);
     };
   };

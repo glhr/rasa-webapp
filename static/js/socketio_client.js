@@ -22,6 +22,8 @@ socket.on('bot_uttered', function(data) {
     handler.receivedBotMessage(data);
 })
 
-export function sendUserMessage(msg) {
-    socket.emit('user_uttered',{'message':msg});
+export function sendUserMessage(text) {
+  if (text && text.length >= 1 && text.replace(/\s/g, '').length !== 0) {
+    socket.emit('user_uttered',{'message':text});
+  }
 }

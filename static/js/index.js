@@ -54,6 +54,4 @@ $('#user_input_form').submit(function(e) {
 		console.log("user input " + msg);
 		addUserMessage(msg);
 		$("#user_input").val('');
-		voice.startRecording();
-		voice.stopRecording();
 });
