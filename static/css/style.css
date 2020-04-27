@@ -13,6 +13,12 @@
   background-color: transparent !important;
 }
 
+#sound-visualizer {
+  position: absolute;
+  width: 100%;
+  height: 200px;
+  top: -600px;
+}
 
 #msg_ul {
   height: 70vh;

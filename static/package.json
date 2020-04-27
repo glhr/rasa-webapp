@@ -8,10 +8,10 @@
     "file-loader": "^3.0.1",
     "jquery": "^3.5.0",
     "materialize-css": "^1.0.0",
+    "recorderjs": "^1.0.1",
     "socket.io-client": "^2.3.0",
     "style-loader": "^0.23.1",
     "url-loader": "^1.1.2",
-    "web-audio-recorder-js": "0.0.2",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11"
   },
