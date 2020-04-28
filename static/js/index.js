@@ -11,13 +11,15 @@ export function addUserMessage(msg) {
 }
 
 export function receivedBotMessage(data) {
-	console.log("-> receivedBotMessage")
+
 	if (data.text) {
-		console.log('Data:'+data.text)
+		// console.log('Data:'+data.text)
+		console.log("-> receivedBotMessage - type:text - " + data.text)
 		addBotMessageToList(data.text, 'text');
 	}
 	else if (data.attachment) {
 		if (data.attachment.type == 'image') {
+			console.log("-> receivedBotMessage - type:image - " + data.attachment.payload.src)
 			addBotMessageToList(data.attachment.payload.src, 'image');
 		}
 
@@ -35,12 +37,11 @@ function scrollDown() {
 }
 
 function addBotMessageToList(data, type) {
+		console.log("-> addBotMessageToList")
 		if (type == 'text') {
-			console.log("-> addBotMessageToList " + type)
 			$('#msg_ul').append('<li class="collection-item botmsg_li"><span class="botmsg_span speech-bubble speech-bubble-right">'+data+'</span></li>');
 		}
 		else if (type == 'image') {
-			console.log("-> addBotMessageToList " + type)
 			$('#msg_ul').append('<li class="collection-item botmsg_li"><span class="botmsg_span speech-bubble speech-bubble-right"><img src="'+data+'"></span></li>');
 		}
 		scrollDown();
