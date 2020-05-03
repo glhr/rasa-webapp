@@ -1,16 +1,12 @@
 import Speech from "speak-tts";
 
 const _addVoicesList = voices => {
-  const list = window.document.createElement("div");
-  let html =
-    '<select id="languages"><option value="">autodetect language</option>';
   voices.forEach(voice => {
-    html += `<option value="${voice.lang}" data-name="${voice.name}">${
-      voice.name
-    } (${voice.lang})</option>`;
+    $("#voice-selector").append(`<li><a href="#!">${voice.name} (${voice.lang})</a></li>`);
+    // html += `<option value="${voice.lang}" data-name="${voice.name}">${
+    //   voice.name
+    // } (${voice.lang})</option>`;
   });
-  list.innerHTML = html;
-  window.document.body.appendChild(list);
 };
 
 const speech = new Speech();
