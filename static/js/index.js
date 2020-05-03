@@ -1,5 +1,6 @@
 import * as socket from './socketio_client.js';
 import * as voice from './voice.js';
+import * as tts from './tts.js';
 
 export function addUserAudio(msg) {
 	// addUserMessageToList("Audio");
@@ -15,6 +16,7 @@ export function receivedBotMessage(data) {
 	if (data.text) {
 		// console.log('Data:'+data.text)
 		console.log("-> receivedBotMessage - type:text - " + data.text)
+		tts.sayText(data.text);
 		addBotMessageToList(data.text, 'text');
 	}
 	else if (data.attachment) {

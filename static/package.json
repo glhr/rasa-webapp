@@ -6,7 +6,9 @@
   "dependencies": {
     "css-loader": "^2.1.1",
     "file-loader": "^3.0.1",
+    "google-tts-api": "0.0.4",
     "jquery": "^3.5.0",
+    "local-cors-proxy": "^1.1.0",
     "materialize-css": "^1.0.0",
     "socket.io-client": "^2.3.0",
     "style-loader": "^0.23.1",
@@ -20,7 +22,8 @@
     "dev-build": "webpack --progress -d --config webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "webpack --progress -d --config webpack.config.js --watch",
-    "demo": "webpack --progress -d --config webpack.config_demo.js --watch"
+    "demo": "webpack --progress -d --config webpack.config_demo.js --watch",
+    "proxy": "lcp --proxyUrl https://translate.google.com"
   },
   "author": "glhr",
   "license": "ISC",
