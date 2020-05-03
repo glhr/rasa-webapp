@@ -1,12 +1,15 @@
 import Speech from "speak-tts";
 
 const _addVoicesList = voices => {
+  var html = ''
   voices.forEach(voice => {
-    $("#voice-selector").append(`<li><a href="#!">${voice.name} (${voice.lang})</a></li>`);
-    // html += `<option value="${voice.lang}" data-name="${voice.name}">${
-    //   voice.name
-    // } (${voice.lang})</option>`;
+    html += `<option value="${voice.lang}" data-name="${voice.name}">${
+      voice.name
+    } (${voice.lang})</option>`;
   });
+  console.log("Adding voices");
+  $("#voice-selector").append(html);
+  $('#voice-selector').formSelect();
 };
 
 const speech = new Speech();
@@ -40,10 +43,13 @@ function _init() {
 }
 
 export function sayText(text) {
-  const languages = document.getElementById("languages");
-  const language = languages.value;
-  const voice = languages.options[languages.selectedIndex].dataset.name;
-  if (language) speech.setLanguage(languages.value);
+  var languages = $("#voice-selector");
+  var voice = languages.prop("options")[languages.prop("selectedIndex")].dataset.name;
+  console.log(voice);
+  // console.log(languages.select.selectedIndex);
+  const language = languages.val();;
+  // const voice = languages.options[languages.selectedIndex].dataset.name;
+  if (language) speech.setLanguage(language);
   if (voice) speech.setVoice(voice);
   speech
     .speak({

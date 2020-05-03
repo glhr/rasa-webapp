@@ -8,10 +8,11 @@ import 'materialize-css/dist/css/materialize.min.css'
 import 'materialize-css/dist/js/materialize.min.js'
 
 $( document ).ready(function() {
-    $(".dropdown-trigger").dropdown({
-			'constrainWidth':false,
-			'coverTrigger':false
-		});
+    // $(".dropdown-trigger").dropdown({
+		// 	'constrainWidth':false,
+		// 	'coverTrigger':false
+		// });
+	  // $('#voice-selector').formSelect();
 });
 
 export function addUserAudio(msg) {

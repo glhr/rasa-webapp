@@ -11,19 +11,20 @@
       <header>
         <div class="navbar-fixed">
 					<!-- TTS language selector -->
-					<ul id="voice-selector" class="dropdown-content">
-					  <!-- <li><a href="#!">one</a></li>
-					  <li><a href="#!">two</a></li>
-					  <li class="divider"></li>
-					  <li><a href="#!">three</a></li> -->
-					</ul>
+					<!-- <ul id="voice-selector" class="dropdown-content">
+					</ul> -->
         <nav>
           <div class="nav-wrapper">
             <a href="#!" class="brand-logo center"><img id="logo-img" class="responsive-img" src="static/img/lh7-logo.png"></a>
-						<ul class="right hide-on-med-and-down">
-				      <!-- Dropdown Trigger -->
-				      <li><a class="dropdown-trigger" href="#!" data-target="voice-selector">TTS voice<i class="material-icons right">arrow_drop_down</i></a></li>
-				    </ul>
+						<div class="input-field valign-wrapper right">
+						  <select id="voice-selector">
+						    <option value="" disabled selected>TTS voice</option>
+						    <!-- <option value="1">Option 1</option>
+						    <option value="2">Option 2</option>
+						    <option value="3">Option 3</option> -->
+						  </select>
+						  <!-- <label>Materialize Select</label> -->
+						</div>
           </div>
         </nav>
         </div>
