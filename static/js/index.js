@@ -1,5 +1,19 @@
 import * as socket from './socketio_client.js';
 import * as voice from './voice.js';
+import * as tts from './tts.js';
+
+// var $ = require("jquery");
+
+import 'materialize-css/dist/css/materialize.min.css'
+import 'materialize-css/dist/js/materialize.min.js'
+
+$( document ).ready(function() {
+    // $(".dropdown-trigger").dropdown({
+		// 	'constrainWidth':false,
+		// 	'coverTrigger':false
+		// });
+	  // $('#voice-selector').formSelect();
+});
 
 export function addUserAudio(msg) {
 	// addUserMessageToList("Audio");
@@ -15,6 +29,7 @@ export function receivedBotMessage(data) {
 	if (data.text) {
 		// console.log('Data:'+data.text)
 		console.log("-> receivedBotMessage - type:text - " + data.text)
+		tts.sayText(data.text);
 		addBotMessageToList(data.text, 'text');
 	}
 	else if (data.attachment) {
@@ -26,10 +41,7 @@ export function receivedBotMessage(data) {
 	}
 }
 
-import 'materialize-css/dist/css/materialize.min.css'
-import 'materialize-css/dist/js/materialize.min.js'
 
-var $ = require("jquery");
 
 function scrollDown() {
 	var d = $('#msg_ul');
