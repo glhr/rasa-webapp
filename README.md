@@ -20,7 +20,7 @@ The RASA assistant used in this project can be found [here](https://github.com/g
 Install npm dependencies:
 ```
 cd static
-npm install
+npm install --save css-loader file-loader materialize-css jquery style-loader socket.io-client url-loader webpack webpack-cli
 ```
 Install Python dependencies:
 ```
