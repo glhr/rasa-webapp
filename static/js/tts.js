@@ -54,7 +54,7 @@ export function sayText(text) {
   speech
     .speak({
       text: text,
-      queue: false,
+      queue: true,
       listeners: {
         onstart: () => {
           console.log("Start utterance");
