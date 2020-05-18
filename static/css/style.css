@@ -114,6 +114,8 @@ nav .brand-logo.center {
 
 .usermsg_span {
 	float: right;
+  width: 50%;
+  text-align: left;
 }
 
 .botmsg_li {
