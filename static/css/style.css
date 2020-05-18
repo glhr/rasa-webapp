@@ -57,7 +57,7 @@ nav .brand-logo.center {
 	border-radius: .4em;
 	padding: 15px 20px;
 	margin: 0.1em 0;
-	text-align: center;
+	text-align: left;
 	color: white;
 	/* font-weight: bold; */
 	font-size: 120%;
@@ -120,5 +120,6 @@ nav .brand-logo.center {
 
 .botmsg_li {
 	float: left;
-	width: 100%;
+  width: 50%;
+  text-align: left;
 }
