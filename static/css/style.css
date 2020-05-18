@@ -70,6 +70,7 @@ nav .brand-logo.center {
 
 .speech-bubble-right {
 	background: #00aabb;
+  max-width: 60%;
 }
 
 .speech-bubble-left:after {
@@ -114,12 +115,12 @@ nav .brand-logo.center {
 
 .usermsg_span {
 	float: right;
-  width: 50%;
+  max-width: 60%;
   text-align: left;
 }
 
 .botmsg_li {
 	float: left;
-  width: 50%;
+  width: 100%;
   text-align: left;
 }
