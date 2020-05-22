@@ -124,3 +124,9 @@ nav .brand-logo.center {
   width: 100%;
   text-align: left;
 }
+
+@media only screen and (max-width: 600px) {
+  nav .input-field {
+    width:30%;
+  }
+}
