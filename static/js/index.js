@@ -1,5 +1,19 @@
 import * as socket from './socketio_client.js';
 import * as voice from './voice.js';
+import * as tts from './tts.js';
+
+// var $ = require("jquery");
+
+import 'materialize-css/dist/css/materialize.min.css'
+import 'materialize-css/dist/js/materialize.min.js'
+
+$( document ).ready(function() {
+    // $(".dropdown-trigger").dropdown({
+		// 	'constrainWidth':false,
+		// 	'coverTrigger':false
+		// });
+	  // $('#voice-selector').formSelect();
+});
 
 export function addUserAudio(msg) {
 	// addUserMessageToList("Audio");
@@ -11,23 +25,23 @@ export function addUserMessage(msg) {
 }
 
 export function receivedBotMessage(data) {
-	console.log("-> receivedBotMessage")
+
 	if (data.text) {
-		console.log('Data:'+data.text)
+		// console.log('Data:'+data.text)
+		console.log("-> receivedBotMessage - type:text - " + data.text)
+		tts.sayText(data.text);
 		addBotMessageToList(data.text, 'text');
 	}
 	else if (data.attachment) {
 		if (data.attachment.type == 'image') {
+			console.log("-> receivedBotMessage - type:image - " + data.attachment.payload.src)
 			addBotMessageToList(data.attachment.payload.src, 'image');
 		}
 
 	}
 }
 
-import 'materialize-css/dist/css/materialize.min.css'
-import 'materialize-css/dist/js/materialize.min.js'
 
-var $ = require("jquery");
 
 function scrollDown() {
 	var d = $('#msg_ul');
@@ -35,12 +49,11 @@ function scrollDown() {
 }
 
 function addBotMessageToList(data, type) {
+		console.log("-> addBotMessageToList")
 		if (type == 'text') {
-			console.log("-> addBotMessageToList " + type)
 			$('#msg_ul').append('<li class="collection-item botmsg_li"><span class="botmsg_span speech-bubble speech-bubble-right">'+data+'</span></li>');
 		}
 		else if (type == 'image') {
-			console.log("-> addBotMessageToList " + type)
 			$('#msg_ul').append('<li class="collection-item botmsg_li"><span class="botmsg_span speech-bubble speech-bubble-right"><img src="'+data+'"></span></li>');
 		}
 		scrollDown();

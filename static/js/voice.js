@@ -7,7 +7,6 @@ import * as index from './index.js';
 var audioContext = undefined;
 var isRecording = false;
 var mediaRecorder = {};
-var isRecording = false;
 var dataArray = [];
 var analyser = undefined;
 var canvas = undefined;
@@ -32,6 +31,12 @@ export function startRecording() {
   navigator.getUserMedia({ audio: true }, startUserMedia, e => {
     console.log(`No live audio input in this browser: ${e}`);
   });
+  // window.setTimeout(() => {
+  //   if (isRecording) {
+  //     stopRecording();
+  //     console.log('10 seconds, stop recording');
+  //   }
+  // }, 20000);
 }
 
 export function stopRecording() {
@@ -61,12 +66,7 @@ function startUserMedia(stream) {
   // vm.mediaRecorder.start();
   mediaRecorder = new Recorder(source, { numChannels: 1 });
   mediaRecorder.record();
-  window.setTimeout(() => {
-    if (isRecording) {
-      stopRecording();
-      console.log('10 seconds, stop recording');
-    }
-  }, 10000);
+
   // Setup options
   const options = {
     source: source,
@@ -76,7 +76,7 @@ function startUserMedia(stream) {
       console.log('voice_stop');
     },
     voice_start: function() {
-      ('voice_start');
+      console.log('voice_start');
       // } else if (!vm.isRecording && (incomeMessage.length === 0)) {
       // 	console.log('StartRecording');
       // 	vm.startRecord();

@@ -6,21 +6,23 @@
   "dependencies": {
     "css-loader": "^2.1.1",
     "file-loader": "^3.0.1",
-    "jquery": "^3.5.0",
+    "jquery": "^3.5.1",
     "materialize-css": "^1.0.0",
     "socket.io-client": "^2.3.0",
+    "speak-tts": "^2.0.8",
     "style-loader": "^0.23.1",
     "url-loader": "^1.1.2",
-    "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.11"
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
   },
   "devDependencies": {},
   "scripts": {
-    "build": "webpack -p --progress --config webpack.config.js",
+    "build": "webpack --progress -d --config webpack.config.js",
     "dev-build": "webpack --progress -d --config webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "webpack --progress -d --config webpack.config.js --watch",
-    "demo": "webpack --progress -d --config webpack.config_demo.js --watch"
+    "demo": "webpack --progress -d --config webpack.config_demo.js --watch",
+    "proxy": "lcp --proxyUrl https://translate.google.com"
   },
   "author": "glhr",
   "license": "ISC",

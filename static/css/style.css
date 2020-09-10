@@ -13,6 +13,19 @@
   margin-bottom: 5px !important;
 } */
 
+nav .brand-logo.center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%) !important;
+  height:100%;
+}
+
+#logo-img {
+  filter: brightness(0) invert(1);
+  height:100%;
+  padding: 5px;
+}
+
 #footer-row {
   margin-bottom: 0px !important;
 }
@@ -36,6 +49,7 @@
 
 .speech-bubble > img {
 	max-height: 250px;
+  max-width:100%;
 }
 
 .speech-bubble {
@@ -44,7 +58,7 @@
 	border-radius: .4em;
 	padding: 15px 20px;
 	margin: 0.1em 0;
-	text-align: center;
+	text-align: left;
 	color: white;
 	/* font-weight: bold; */
 	font-size: 120%;
@@ -57,6 +71,7 @@
 
 .speech-bubble-right {
 	background: #00aabb;
+  max-width: 60%;
 }
 
 .speech-bubble-left:after {
@@ -101,9 +116,18 @@
 
 .usermsg_span {
 	float: right;
+  max-width: 60%;
+  text-align: left;
 }
 
 .botmsg_li {
 	float: left;
-	width: 100%;
+  width: 100%;
+  text-align: left;
+}
+
+@media only screen and (max-width: 600px) {
+  nav .input-field {
+    width:30%;
+  }
 }

@@ -3,15 +3,28 @@
 		<meta charset="utf-8">
 		<meta name="LH7 chatbot" content="LH7 chatbot">
 		<title>LH7+ chatbot</title>
+		<link rel="shortcut icon" type="image/png" href="static/img/favicon.ico"/>
 		<link rel="stylesheet" href="/static/css/style.css"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	</head>
     <body>
       <header>
         <div class="navbar-fixed">
+					<!-- TTS language selector -->
+					<!-- <ul id="voice-selector" class="dropdown-content">
+					</ul> -->
         <nav>
           <div class="nav-wrapper">
-            <a href="#!" class="brand-logo center">LH7+</a>
+            <a href="#!" class="brand-logo center"><img id="logo-img" class="responsive-img" src="static/img/lh7-logo.png"></a>
+						<div class="input-field valign-wrapper right">
+						  <select id="voice-selector">
+						    <option value="" disabled selected>TTS voice</option>
+						    <!-- <option value="1">Option 1</option>
+						    <option value="2">Option 2</option>
+						    <option value="3">Option 3</option> -->
+						  </select>
+						  <!-- <label>Materialize Select</label> -->
+						</div>
           </div>
         </nav>
         </div>
@@ -51,16 +64,16 @@
               <nav>
                   <div class="nav-wrapper">
 										<div class="col s11">
-                    <form id="user_input_form">
+                    <form id="user_input_form" autocomplete="off">
                       <div class="input-field">
-                        <input id="user_input" type="search" required>
+                        <input id="user_input" type="search" required autofocus>
                         <label class="label-icon" for="user_input"><i class="material-icons">send</i></label>
 
                       </div>
                     </form>
 										</div>
 										<div class="col s1">
-										<ul class="right hide-on-med-and-down">
+										<ul class="right">
 									    <li><a id="record-button" class="btn-floating waves-effect waves-light teal darken-2">
 												<i class="material-icons">mic</i>
 											</a></li>
