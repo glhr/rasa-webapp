@@ -15,22 +15,65 @@ var canvasHeight = undefined;
 var canvasWidth = undefined;
 var countFrame = 0;
 var recordTime = undefined;
+var mediaRecorder = undefined;
+var source = undefined;
 
 canvas = document.getElementById('sound-visualizer');
 ctx = canvas.getContext('2d');
 
+// Ask for audio device
+navigator.getUserMedia = navigator.getUserMedia
+  || navigator.mozGetUserMedia
+  || navigator.webkitGetUserMedia;
+
+
+function startUserMedia(stream) {
+    window.AudioContext = window.AudioContext || window.webkitAudioContext;
+    audioContext = new AudioContext({ sampleRate: 16000 });
+    analyser = audioContext.createAnalyser();
+    source = audioContext.createMediaStreamSource(stream).connect(analyser);
+
+    console.log(analyser);
+    dataArray = new Uint8Array(analyser.fftSize / 32);
+    animate();
+    const chunks = [];
+    const audioOptions = {
+      audioBitsPerSecond: 16000
+    };
+
+    // Setup options
+    const options = {
+      source: source,
+      voice_stop: function() {
+        console.log('voice_stop');
+        if (isRecording === true) {
+          stopRecording();
+        }
+      },
+      voice_start: function() {
+        console.log('voice_start');
+        if (isRecording === false) {
+          startRecording();
+        }
+        // } else if (!vm.isRecording && (incomeMessage.length === 0)) {
+        // 	console.log('StartRecording');
+        // 	vm.startRecord();
+      }
+    };
+    // Create VAD
+    const vad = new VAD(options);
+  }
+
+navigator.getUserMedia({ audio: true }, startUserMedia, e => {
+  console.log(`No live audio input in this browser: ${e}`);
+});
+
 export function startRecording() {
   isRecording = true;
   index.toggleRecordButton('off');
-  window.AudioContext = window.AudioContext || window.webkitAudioContext;
-  audioContext = new AudioContext({ sampleRate: 16000 });
-  // Ask for audio device
-  navigator.getUserMedia = navigator.getUserMedia
-    || navigator.mozGetUserMedia
-    || navigator.webkitGetUserMedia;
-  navigator.getUserMedia({ audio: true }, startUserMedia, e => {
-    console.log(`No live audio input in this browser: ${e}`);
-  });
+  mediaRecorder = new Recorder(source, { numChannels: 1 });
+  mediaRecorder.record();
+
   // window.setTimeout(() => {
   //   if (isRecording) {
   //     stopRecording();
@@ -44,48 +87,13 @@ export function stopRecording() {
   isRecording = false;
   mediaRecorder.stop();
   mediaRecorder.exportWAV(createFileLink);
-  console.log('voice_stop');
-  audioContext.close().then(() => {
-    console.log('streaming close');
-  });
+  // audioContext.close().then(() => {
+  //   console.log('streaming close');
+  // });
 
 }
 
-function startUserMedia(stream) {
-  analyser = audioContext.createAnalyser();
-  const source = audioContext.createMediaStreamSource(stream).connect(analyser);
-  console.log(analyser);
-  dataArray = new Uint8Array(analyser.fftSize / 32);
-  animate();
-  const chunks = [];
-  const audioOptions = {
-    audioBitsPerSecond: 16000
-  };
-  /*         This two lines using Mediarecorder            */
-  // vm.mediaRecorder = new MediaRecorder(stream, audioOptions);
-  // vm.mediaRecorder.start();
-  mediaRecorder = new Recorder(source, { numChannels: 1 });
-  mediaRecorder.record();
 
-  // Setup options
-  const options = {
-    source: source,
-    voice_stop: function() {
-      /*         This line using Mediarecorder            */
-      // if (vm.mediaRecorder.state === 'recording') {
-      console.log('voice_stop');
-    },
-    voice_start: function() {
-      console.log('voice_start');
-      // } else if (!vm.isRecording && (incomeMessage.length === 0)) {
-      // 	console.log('StartRecording');
-      // 	vm.startRecord();
-    }
-  };
-  // Create VAD
-  // eslint-disable-next-line no-undef
-  const vad = new VAD(options);
-}
 
 function createFileLink(blob) {
   console.log('recorder stopped');
